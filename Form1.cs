@@ -1,4 +1,5 @@
-﻿using System;
+﻿using core_admin.utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace YImageForm
         public Form1()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 0;
         }
 
       
@@ -149,6 +151,15 @@ namespace YImageForm
                     new Point(b1, b2),
                     new Point(b3, b4),
                     full_new_file_path);
+                if (comboBox1.SelectedItem.ToString() == "pdf文件")
+                {
+                    if (System.IO.File.Exists(full_new_file_path))
+                    {
+                        string new_file_name_pdf = file_name + "_out.pdf";
+                        string full_new_file_pdf_path = System.IO.Path.Combine(file_path, new_file_name_pdf);
+                        Image2PdfA4.convert(full_new_file_path, full_new_file_pdf_path);
+                    }
+                }
 
             }
         }
@@ -193,6 +204,17 @@ namespace YImageForm
                                 new Point(b1, b2),
                                 new Point(b3, b4),
                                 full_new_file_path);
+                            if (comboBox1.SelectedItem.ToString() == "pdf文件")
+                            {
+
+                                if (System.IO.File.Exists(full_new_file_path))
+                                {
+                                    string new_file_name_pdf = file_name + "_out.pdf";
+                                    string full_new_file_pdf_path = System.IO.Path.Combine(file_path, new_file_name_pdf);
+                                    Image2PdfA4.convert(full_new_file_path, full_new_file_pdf_path);
+                                }
+                             
+                            }
                         } catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
