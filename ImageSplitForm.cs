@@ -42,7 +42,7 @@ namespace YImageForm
                 pictureBox1.Image = img;
                 image_path = selectedFilePath;
                 label1.Text = selectedFilePath;
-
+                label2.Text = img.Width + " x " + img.Height;
 
             }
         }
